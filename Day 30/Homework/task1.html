@@ -1,0 +1,121 @@
+<!--1. შექმენით Facebook Sign Up გვერდი ეცადეთ მაქსიმალურად მიამსგავსოთ ის ორიგინალს
+2. შექმენით ორი ტექსტი h1 და p და შეუცვალეთ ზომები h1 იყოს 36px და P 18px გამოიყენეთ internal css.
+3. დაწერეთ რამდენიმე სახის ტექსტი და ყველას font size მიანიჭეთ განსხვავებული
+4. გამოიყენე internal CSS და დააყენე ტექსტის ფერი ვარდისფერი  <h1>-ზე 
+5. დააყენე  <body> background   ფერი ყავისფერი internal CSS-ის გამოყენებით.
+6. დააყენე პარაგრაფის ტექსტის ფერი ლურჯი internal CSS-ით.
+7. დაწერე CSS კოდი, რომ ყველა <h2> ელემენტს ჰქონდეს ტექსტი მარჯვნივ.
+8. დააყენეთ ტექსტის ფერი <h3> ელემენტში წითელი და გაცენტრეთ ის
+9. გამოიყენე internal CSS და დააყენე მთელ გვერდს წითელი background  ფერი.-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Sign Up</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: brown; /* Task 5 */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        
+        h1 {
+            font-size: 36px;
+            color: pink; /* Task 4 */
+        }
+
+        p {
+            font-size: 18px;
+            color: blue; /* Task 6 */
+        }
+
+        
+        h2 {
+            font-size: 30px;
+            text-align: right; /* Task 7 */
+        }
+
+        h3 {
+            font-size: 24px;
+            color: red; /* Task 8 */
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 20px;
+        }
+
+        h5 {
+            font-size: 16px;
+        }
+
+        h6 {
+            font-size: 14px;
+        }
+
+    
+        .red-bg {
+            background-color: red;
+        }
+
+        .form-container {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #165dc3;
+        }
+    </style>
+</head>
+<body class="red-bg"> 
+    
+    <div class="form-container">
+        <h1>Sign Up</h1>
+        <p>It's quick and easy.</p>
+
+        <form>
+            <input type="text" placeholder="First name" required>
+            <input type="text" placeholder="Last name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+
+    <h2>This is an h2 heading aligned to the right</h2>
+    <h3>This is an h3 heading in red and centered</h3>
+    <h4>This is an h4 heading</h4>
+    <h5>This is an h5 heading</h5>
+    <h6>This is an h6 heading</h6>
+</body>
+</html>
