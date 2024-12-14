@@ -1,0 +1,81 @@
+<!--1-->
+
+<div style="display: flex; flex-direction: column;">
+    <div>Div 1</div>
+    <div>Div 2</div>
+    <div>Div 3</div>
+    <div>Div 4</div>
+    <div>Div 5</div>
+</div>
+
+<!--2-->
+<div style="display: flex; flex-wrap: wrap;">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+    <p>Paragraph 4</p>
+    <p>Paragraph 5</p>
+</div>
+
+<!--3-->
+<div style="display: flex; flex-wrap: wrap;">
+    <p style="flex-shrink: 1;">Paragraph 1</p>
+    <p style="flex-shrink: 1;">Paragraph 2</p>
+    <p style="flex-shrink: 1;">Paragraph 3</p>
+    <p style="flex-shrink: 1;">Paragraph 4</p>
+    <p style="flex-shrink: 1;">Paragraph 5</p>
+    <p>Paragraph 6</p>
+    <p>Paragraph 7</p>
+    <p>Paragraph 8</p>
+    <p>Paragraph 9</p>
+    <p>Paragraph 10</p>
+</div>
+
+<!--4-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            if (operator === "/" && num2 === 0) {
+                result = "Cannot divide by zero!";
+            } else {
+                switch (operator) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
+                }
+            }
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
