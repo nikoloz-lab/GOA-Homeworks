@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mona Lisa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .container img {
+      max-width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .container img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 24px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mona Lisa</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Mona_Lisa.jpg" alt="Mona Lisa">
+    <p>The Mona Lisa is one of the most famous paintings in the world, created by Leonardo da Vinci.</p>
+  </div>
+</body>
+</html>

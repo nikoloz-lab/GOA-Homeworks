@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin and Position Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .box {
+            width: 200px;
+            height: 100px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .static-box {
+            background-color: red;
+        }
+        .relative-box {
+            background-color: blue;
+            position: relative;
+            left: 20px;
+        }
+        .absolute-box {
+            background-color: green;
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .fixed-box {
+            background-color: purple;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Margin and Position Comparison</h1>
+    <div class="static-box box">Static</div>
+    <div class="relative-box box">Relative</div>
+    <div class="absolute-box box">Absolute</div>
+    <div class="fixed-box box">Fixed</div>
+</body>
+</html>
