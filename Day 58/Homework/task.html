@@ -1,0 +1,109 @@
+<!--ეცადეთ, რომ გააკეთოთ მსგავსი საიტი, თუ რამე არ გამოგივათ, აუცილებლად დაიხმარეთ ლიდერი, მნიშვნელოვანი დავალებაა, გამოიყენეთ flexbox:-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('your-background.jpg'); /* Background for entire page */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Header Section */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 80%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .header {
+            width: 100%;
+            text-align: center;
+            background-color: lightblue;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+
+        /* Div Section with Fixed Background */
+        .fixed-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 100%;
+            position: relative;
+            background-image: url('fixed-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 5px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Centered Div Section */
+        .centered-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 200px;
+            background-color: lightgray;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        /* Background Inside Centered Div */
+        .centered-div::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('centered-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            z-index: -1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">Flexbox Header Inside Container</div>
+
+        <!-- Fixed Background Section -->
+        <div class="fixed-section">Fixed Background Section</div>
+
+        <!-- Centered Div -->
+        <div class="centered-div">Centered Content</div>
+    </div>
+</body>
+</html>
