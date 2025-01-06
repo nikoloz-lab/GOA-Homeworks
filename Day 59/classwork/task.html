@@ -1,0 +1,76 @@
+<!--1. შექმენით საიტი, სადაც გექნებათ:
+
+* 150x200 div, რომელიც მაუსის დაჭერის შემდეგ გადაინაცვლებს მარცხნივ, 50 px-ით.
+
+* 150x200 div, რომელიც მაუსის დაჭერის შემდეგ გადიდდება 1.5-ჯერ, ან დაპატარავდება 2-ჯერ.
+
+* 150x200 div, რომელიც მაუსის დაჭერის შემდეგ გადაინაცვლებს დიაგონალურად ქვევით.
+
+* 150x200 div, რომელიც მაუსის დაჭერის შემდეგ დატრიალდება საათის ისრის საწინააღმდეგო მიმართულებით.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Divs</title>
+  <style>
+    .container {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .div-box {
+      width: 150px;
+      height: 200px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 200px;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="moveDiv" class="div-box">Move Left</div>
+    <div id="resizeDiv" class="div-box">Resize</div>
+    <div id="scrollDiv" class="div-box">Scroll</div>
+    <div id="rotateDiv" class="div-box">Rotate</div>
+  </div>
+
+  <script>
+    const moveDiv = document.getElementById('moveDiv');
+    const resizeDiv = document.getElementById('resizeDiv');
+    const scrollDiv = document.getElementById('scrollDiv');
+    const rotateDiv = document.getElementById('rotateDiv');
+
+    // Move Left by 50px
+    moveDiv.addEventListener('click', () => {
+      const currentLeft = parseInt(getComputedStyle(moveDiv).marginLeft) || 0;
+      moveDiv.style.marginLeft = currentLeft + 50 + 'px';
+    });
+
+    // Resize: Toggle between enlarging 1.5x and reducing 2x
+    resizeDiv.addEventListener('click', () => {
+      resizeDiv.style.transform = resizeDiv.style.transform === 'scale(1.5)' ? 'scale(0.5)' : 'scale(1.5)';
+    });
+
+    // Scroll Diagonally
+    let scrollX = 0, scrollY = 0;
+    scrollDiv.addEventListener('click', () => {
+      scrollX += 20;
+      scrollY += 20;
+      scrollDiv.style.transform = translate($[scrollX]px, $[scrollY]px);
+    });
+
+    // Rotate Counterclockwise
+    let angle = 0;
+    rotateDiv.addEventListener('click', () => {
+      angle -= 45;
+      rotateDiv.style.transform = rotate($[angle]deg);
+    });
+  </script>
+</body>
+</html>
