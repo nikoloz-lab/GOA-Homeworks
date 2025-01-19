@@ -1,0 +1,43 @@
+<!--შექმენით 200x200 კუბიკი, ნებისმიერი ფერის, რომელიც ანიმაცის მეშვეობით ჯერ დაპატარავდება, შემდეგ კი დატრიალდება.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cube Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000000;
+    }
+
+    .cube {
+      width: 200px;
+      height: 200px;
+      background-color: #600101;
+      transform-style: preserve-3d;
+      animation: shrinkRotate 4s infinite;
+    }
+
+    @keyframes shrinkRotate {
+      0% {
+        transform: scale(1) rotateY(0deg);
+      }
+      50% {
+        transform: scale(0.5) rotateY(180deg);
+      }
+      100% {
+        transform: scale(1) rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cube"></div>
+</body>
+</html>
