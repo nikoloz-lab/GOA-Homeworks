@@ -1,0 +1,54 @@
+<!--შექმენით სია, სადაც დაამატებთ 5 ელემენტს, შემდეგ კი გამოიტანე მესამე და მეოთხე ელემენტები-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Elements from List</title>
+  <script>
+    function extractElements() {
+      let myList = [10, 20, 30, 40, 50];
+      let thirdElement = myList[2];
+      let fourthElement = myList[3];
+      document.getElementById("result").innerHTML = Third Element:{thirdElement} <br> Fourth element: ${fourthElement};
+    }
+  </script>
+</head>
+<body>
+  <h2>Extract Third and Fourth Elements from a List</h2>
+  <button onclick="extractElements()">Extract Elements</button>
+  <div id="result"></div>
+</body>
+</html>
+
+<!--შექმენით სია, სადაც დაამატებთ 5 ელემენტს, შემდეგ მომხმარებელს შემოატანინეთ რიცხვი და რომელ რიცხსაც შემოიტანთ მისი ინდექსი დაპრინტეთ
+September 15, 2024
+--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Index in List</title>
+  <script>
+    function findIndex() {
+      let myList = [10, 20, 30, 40, 50];
+      let userInput = parseInt(document.getElementById("inputNumber").value);
+      if (myList.includes(userInput)) {
+        let index = myList.indexOf(userInput);
+        document.getElementById("result").innerHTML = The index of ${userInput} is ${index}.;
+      } else {
+        document.getElementById("result").innerHTML = ${userInput} is not in the list.;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Find the Index of a Number in a List</h2>
+  <input type="number" id="inputNumber" placeholder="Enter a number">
+  <button onclick="findIndex()">Find Index</button>
+  <div id="result"></div>
+</body>
+</html>
