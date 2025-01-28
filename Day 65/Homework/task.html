@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +9,14 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #1e1e1e;
-            color: white;
+            color: rgb(255, 254, 254);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
         .feedback-box {
-            background: #2a2a2a;
+            background: #000000;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -27,17 +28,24 @@
             gap: 10px;
             margin: 10px 0;
         }
-        .star {
+        input[type="radio"] {
+            display: none;
+        }
+        label {
             font-size: 25px;
             cursor: pointer;
         }
+        input[type="radio"]:checked ~ label {
+            color: rgb(0, 4, 255);
+        }
         .submit-btn {
-            background-color: orange;
+            background-color: rgb(16, 205, 239);
             border: none;
             padding: 10px;
             width: 100%;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -45,35 +53,21 @@
 
 <div class="feedback-box">
     <h2>How did we do?</h2>
-    <p>Please let us know how we did with your support request.</p>
+    <p>Please let us know how we did with your request.</p>
     <div class="stars">
-        <span class="star" onclick="selectRating(1)">⭐</span>
-        <span class="star" onclick="selectRating(2)">⭐</span>
-        <span class="star" onclick="selectRating(3)">⭐</span>
-        <span class="star" onclick="selectRating(4)">⭐</span>
-        <span class="star" onclick="selectRating(5)">⭐</span>
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">⭐</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">⭐</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">⭐</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">⭐</label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">⭐</label>
     </div>
-    <button class="submit-btn" onclick="submitFeedback()">SUBMIT</button>
+    <button class="submit-btn">enter</button>
 </div>
-
-<script>
-    let selectedRating = 0;
-
-    function selectRating(rating) {
-        selectedRating = rating;
-        document.querySelectorAll('.star').forEach((star, index) => {
-            star.style.color = index < rating ? 'gold' : 'white';
-        });
-    }
-
-    function submitFeedback() {
-        if (selectedRating === 0) {
-            alert("Please select a rating first!");
-        } else {
-            alert(Thank_you_for_rating_us_$ {selectedRating} stars );
-        }
-    }
-</script>
 
 </body>
 </html>
