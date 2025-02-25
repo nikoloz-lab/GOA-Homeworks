@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #9b9595;
+            padding: 2rem;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #313131;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #ede7e7bf;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .card.tall {
+            grid-row: span 2;
+        }
+
+        .card.wide {
+            grid-column: span 2;
+        }
+
+        .split-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .neon-text {
+            color: #37ff7a;
+            text-shadow: 0 0 5px #01a201;
+            font-family: 'Courier New', monospace;
+        }
+
+        .overlay-text {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .minimal-card {
+            background: #000;
+            color: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(45deg, #870101, #00ffeea2);
+            color: white;
+        }
+
+        .pattern-bg {
+            background-image: 
+                linear-gradient(45deg, #000 25%, transparent 25%),
+                linear-gradient(-45deg, #000 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #000 75%),
+                linear-gradient(-45deg, transparent 75%, #000 75%);
+            background-size: 20px 20px;
+            background-color: white;
+        }
+
+        @media (max-width: 768px) {
+            .card.large, .card.wide {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .split-card {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>DESIGN</h1>
+        <nav class="nav">
+            <a href="#">Work</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="grid">
+        <div class="card large gradient-bg">
+            <div class="card-content">
+                <h2 class="card-title">CREATIVE</h2>
+                <p class="card-text">Exploring the boundaries of everything dude dont stop and never give up that is a life tip that will help ya my guy</p>
+            </div>
+            <div class="overlay-text">01</div>
+        </div>
+
+        <div class="card wide">
+            <div class="split-card">
+                <img src="/api/placeholder/300/400" alt="Abstract Art">
+                <div class="card-content">
+                    <h2 class="card-title">VISION</h2>
+                    <p class="card-text">Breaking conventional design patterns</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card minimal-card">
+            <span class="neon-text">FUTURE</span>
+        </div>
+
+        <div class="card pattern-bg">
+            <div class="card-content">
+                <h2 class="card-title" style="color: #000;">PATTERNS</h2>
+            </div>
+        </div>
+
+        <div class="card tall">
+            <img src="/api/placeholder/400/600" alt="Design Project" style="height: 100%">
+            <div class="overlay-text">EXPLORE</div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h2 class="card-title">MANIFESTO</h2>
+                <p class="card-text">
+                    Design is not just what it looks like and feels like. 
+                    Design is how it works. Simplicity is the ultimate sophistication remember that dude peace.
+                </p>
+            </div>
+        </div>
+
+        <div class="card wide" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%)">
+            <div class="card-content" style="color: white">
+                <h2 class="card-title">HORIZON</h2>
+                <p class="card-text">Pushing boundaries that is what life is about</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

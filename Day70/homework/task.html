@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 400px;
+            background-color: #0a5328;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #c5ff5e;
+            font-weight: bold;
+            font-size: 24px;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .text {
+            color: #f5f5dc;
+            font-size: 42px;
+            font-weight: bold;
+            max-width: 60%;
+            line-height: 1.1;
+            margin-left: 20px;
+            z-index: 2;
+        }
+        
+        .plant {
+            position: relative;
+            width: 180px;
+            height: 250px;
+            margin-right: 20px;
+            z-index: 2;
+        }
+        
+        .plant-head {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 130px;
+            height: 130px;
+            background-color: #c5ff5e;
+            border-radius: 50%;
+            transform: rotate(20deg);
+        }
+        
+        .leaf1 {
+            position: absolute;
+            top: 110px;
+            right: 10px;
+            width: 70px;
+            height: 40px;
+            background-color: #a5e547;
+            border-radius: 50% 20px;
+            transform: rotate(45deg);
+        }
+        
+        .leaf2 {
+            position: absolute;
+            top: 160px;
+            right: 50px;
+            width: 90px;
+            height: 50px;
+            background-color: #a5e547;
+            border-radius: 50% 20px;
+            transform: rotate(70deg);
+        }
+        
+        .stem {
+            position: absolute;
+            top: 100px;
+            right: 90px;
+            width: 12px;
+            height: 140px;
+            background-color: #a5e547;
+            border-radius: 10px;
+            transform: rotate(10deg);
+        }
+        
+        .eye {
+            position: absolute;
+            top: 50px;
+            right: 80px;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 3;
+        }
+        
+        .eye::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        
+        .mouth {
+            position: absolute;
+            top: 110px;
+            right: 60px;
+            width: 70px;
+            height: 35px;
+            background-color: transparent;
+            border-radius: 0 0 50px 50px;
+            border-bottom: 6px solid #0a5328;
+            transform: rotate(20deg);
+            z-index: 3;
+        }
+        
+        .teeth {
+            position: absolute;
+            top: 110px;
+            right: 70px;
+            width: 50px;
+            height: 10px;
+            z-index: 3;
+            display: flex;
+            justify-content: space-around;
+            transform: rotate(20deg);
+        }
+        
+        .tooth {
+            width: 6px;
+            height: 12px;
+            background-color: white;
+            border-radius: 2px;
+        }
+        
+        .buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .button {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #0a5328;
+        }
+        
+        .button-yellow {
+            background-color: #c5ff5e;
+        }
+        
+        .button-green {
+            background-color: #7fff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">wild</div>
+        
+        <div class="text">
+            No artificial.<br>
+            No apologies.
+        </div>
+        
+        <div class="plant">
+            <div class="stem"></div>
+            <div class="leaf1"></div>
+            <div class="leaf2"></div>
+            <div class="plant-head"></div>
+            <div class="eye"></div>
+            <div class="mouth"></div>
+            <div class="teeth">
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+                <div class="tooth"></div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <div class="button button-yellow">Subscribe</div>
+            <div class="button button-green">Shop</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .logo {
+            color: #ff0066;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .products {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+        
+        .product-card {
+            text-align: center;
+            padding: 1rem;
+            width: 200px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-image {
+            width: 100px;
+            height: 200px;
+            margin: 0 auto;
+            background: linear-gradient(45deg, #ff0000, #ffc533, #13ff02, #00eaff);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .mic-stand {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 120px;
+            background: #333;
+            border-radius: 4px;
+        }
+        
+        .product-name {
+            margin-top: 1rem;
+            color: #333;
+        }
+        
+        .user-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">HyperX</div>
+        <div class="nav-links">
+            <span>Home</span>
+            <span>About</span>
+            <span>Contact</span>
+            <span class="user-icon">👤</span>
+        </div>
+    </nav>
+    
+    <div class="products">
+        <div class="product-card">
+            <div class="product-image">
+                <div class="mic-stand"></div>
+            </div>
+            <div class="product-name">Microphone</div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <div class="mic-stand"></div>
+            </div>
+            <div class="product-name">Microphone</div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <div class="mic-stand"></div>
+            </div>
+            <div class="product-name">Microphone</div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <div class="mic-stand"></div>
+            </div>
+            <div class="product-name">Microphone</div>
+        </div>
+    </div>
+</body>
+</html>

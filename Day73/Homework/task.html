@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean Logic Explorer</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --primary: #6c5ce7;
+            --primary-light: #a29bfe;
+            --secondary: #00b894;
+            --secondary-light: #55efc4;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --true-color: #27ae60;
+            --false-color: #e74c3c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --card-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            min-height: 100vh;
+            padding: 2rem;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card h3 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            color: var(--primary);
+        }
+        
+        .boolean-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .boolean-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .boolean-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .boolean-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+        }
+        
+        .true {
+            background-color: var(--true-color);
+        }
+        
+        .false {
+            background-color: var(--false-color);
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        button {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .operations {
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: var(--card-radius);
+            margin-top: 2rem;
+        }
+        
+        .operation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .result {
+            font-weight: bold;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .variable-name {
+            font-family: monospace;
+            font-size: 1.1rem;
+            background-color: var(--light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .toggle-all {
+            background: var(--secondary);
+            margin: 1rem auto;
+            display: block;
+            width: fit-content;
+        }
+        
+        .toggle-all:hover {
+            background: var(--secondary-light);
+        }
+        
+        .console-output {
+            background-color: var(--dark);
+            color: #50fa7b;
+            font-family: monospace;
+            padding: 1.5rem;
+            border-radius: var(--card-radius);
+            margin-top: 2rem;
+            height: 200px;
+            overflow-y: auto;
+        }
+        
+        .console-line {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        
+        .console-line::before {
+            content: "> ";
+            color: #bd93f9;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card, .boolean-box {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .boolean-box:nth-child(1) { animation-delay: 0.1s; }
+        .boolean-box:nth-child(2) { animation-delay: 0.2s; }
+        .boolean-box:nth-child(3) { animation-delay: 0.3s; }
+        .boolean-box:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Boolean Logic Explorer</h1>
+            <h2>Interact with boolean variables and see their combinations</h2>
+        </header>
+        
+        <div class="card">
+            <h3>Boolean Variables</h3>
+            <div class="boolean-grid">
+                <div class="boolean-box">
+                    <span class="variable-name">isActive</span>
+                    <div id="var1Value" class="boolean-value true">true</div>
+                    <button onclick="toggleVar1()">Toggle Value</button>
+                </div>
+                
+                <div class="boolean-box">
+                    <span class="variable-name">isLoggedIn</span>
+                    <div id="var2Value" class="boolean-value true">true</div>
+                    <button onclick="toggleVar2()">Toggle Value</button>
+                </div>
+                
+                <div class="boolean-box">
+                    <span class="variable-name">hasPermission</span>
+                    <div id="var3Value" class="boolean-value false">false</div>
+                    <button onclick="toggleVar3()">Toggle Value</button>
+                </div>
+                
+                <div class="boolean-box">
+                    <span class="variable-name">isDarkMode</span>
+                    <div id="var4Value" class="boolean-value false">false</div>
+                    <button onclick="toggleVar4()">Toggle Value</button>
+                </div>
+            </div>
+            
+            <button class="toggle-all" onclick="toggleAllVariables()">Toggle All Variables</button>
+            
+            <div class="card operations">
+                <h3>Boolean Operations</h3>
+                <div id="operations">
+                    <div class="operation">
+                        <span><span class="variable-name">isActive</span> AND <span class="variable-name">isLoggedIn</span></span>
+                        <span id="op1" class="result true">true</span>
+                    </div>
+                    <div class="operation">
+                        <span><span class="variable-name">hasPermission</span> OR <span class="variable-name">isDarkMode</span></span>
+                        <span id="op2" class="result false">false</span>
+                    </div>
+                    <div class="operation">
+                        <span>ALL variables are true</span>
+                        <span id="op3" class="result false">false</span>
+                    </div>
+                    <div class="operation">
+                        <span>AT LEAST ONE variable is true</span>
+                        <span id="op4" class="result true">true</span>
+                    </div>
+                </div>
+                
+                <div class="button-grid">
+                    <button onclick="logVariables()">Log All Variables</button>
+                    <button onclick="logCombinations()">Log Combinations</button>
+                    <button onclick="clearConsole()">Clear Console</button>
+                </div>
+            </div>
+            
+            <div class="console-output" id="console">
+                <div class="console-line">Console output will appear here</div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Boolean Logic Explorer &copy; 2025 | Interactive JavaScript Demo</p>
+        </footer>
+    </div>
+
+    <script>
+        let isActive = true;
+        let isLoggedIn = true;
+        let hasPermission = false;
+        let isDarkMode = false;
+        
+        function updateUI() {
+            updateBooleanDisplay('var1Value', isActive);
+            updateBooleanDisplay('var2Value', isLoggedIn);
+            updateBooleanDisplay('var3Value', hasPermission);
+            updateBooleanDisplay('var4Value', isDarkMode);
+            
+            updateBooleanDisplay('op1', isActive && isLoggedIn);
+            updateBooleanDisplay('op2', hasPermission || isDarkMode);
+            updateBooleanDisplay('op3', isActive && isLoggedIn && hasPermission && isDarkMode);
+            updateBooleanDisplay('op4', isActive || isLoggedIn || hasPermission || isDarkMode);
+        }
+        
+        function updateBooleanDisplay(elementId, value) {
+            const element = document.getElementById(elementId);
+            element.textContent = value.toString();
+            element.className = value ? 'boolean-value true' : 'boolean-value false';
+        }
+        
+        // Toggle functions for each variable
+        function toggleVar1() {
+            isActive = !isActive;
+            logToConsole(isActive toggledto: ${isActive})
+            updateUI();
+        }
+        
+        function toggleVar2() {
+            isLoggedIn = !isLoggedIn;
+            logToConsole(isLoggedIn toggled to: ${isLoggedIn});
+            updateUI();
+        }
+        
+        function toggleVar3() {
+            hasPermission = !hasPermission;
+            logToConsole(hasPermission toggled to: ${hasPermission});
+            updateUI();
+        }
+        
+        function toggleVar4() {
+            isDarkMode = !isDarkMode;
+            logToConsole(isDarkMode toggled to: ${isDarkMode});
+            updateUI();
+        }
+        
+        // Toggle all variables at once
+        function toggleAllVariables() {
+            isActive = !isActive;
+            isLoggedIn = !isLoggedIn;
+            hasPermission = !hasPermission;
+            isDarkMode = !isDarkMode;
+            logToConsole("All variables toggled!");
+            updateUI();
+        }
+        
+        // Log all variables to console
+        function logVariables() {
+            logToConsole("--- CURRENT VARIABLE VALUES ---");
+            logToConsole(isActive = ${isActive});
+            logToConsole(isLoggedIn = ${isLoggedIn});
+            logToConsole(hasPermission = ${hasPermission});
+            logToConsole(isDarkMode = ${isDarkMode});
+            
+            // Also log to browser console
+            console.log({isActive, isLoggedIn, hasPermission, isDarkMode});
+        }
+        
+        // Log combinations to console
+        function logCombinations() {
+            logToConsole("--- BOOLEAN COMBINATIONS ---");
+            logToConsole(isActive AND isLoggedIn = ${isActive && isLoggedIn});
+            logToConsole(isActive OR isLoggedIn = ${isActive || isLoggedIn});
+            logToConsole(hasPermission AND isDarkMode = ${hasPermission && isDarkMode});
+            logToConsole(hasPermission OR isDarkMode = ${hasPermission || isDarkMode});
+            logToConsole(All true: ${isActive && isLoggedIn && hasPermission && isDarkMode});
+            logToConsole(Any true: ${isActive || isLoggedIn || hasPermission || isDarkMode});
+            
+            // Also log to browser console
+            console.log("Boolean Combinations:", {
+                "isActive && isLoggedIn": isActive && isLoggedIn,
+                "isActive || isLoggedIn": isActive || isLoggedIn,
+                "hasPermission && isDarkMode": hasPermission && isDarkMode,
+                "hasPermission || isDarkMode": hasPermission || isDarkMode,
+                "All true": isActive && isLoggedIn && hasPermission && isDarkMode,
+                "Any true": isActive || isLoggedIn || hasPermission || isDarkMode
+            });
+        }
+        
+        // Clear console output
+        function clearConsole() {
+            document.getElementById('console').innerHTML = '';
+        }
+        
+        // Helper function to log to our visual console
+        function logToConsole(message) {
+            const consoleElement = document.getElementById('console');
+            const logLine = document.createElement('div');
+            logLine.className = 'console-line';
+            logLine.textContent = message;
+            consoleElement.appendChild(logLine);
+            
+            // Auto-scroll to bottom
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+        
+        // Initial console output
+        document.addEventListener('DOMContentLoaded', () => {
+            logToConsole("Boolean Logic Explorer initialized");
+            logToConsole("Click the buttons to interact with boolean variables");
+            logVariables();
+            updateUI();
+        });
+    </script>
+</body>
+</html>

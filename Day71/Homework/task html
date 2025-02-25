@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Website</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .photo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .photo-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 10px;
+            text-align: center;
+            width: 45%;
+            min-width: 300px;
+            transition: all 0.3s ease;
+        }
+        
+        .photo-box h2 {
+            margin-top: 0;
+            color: #444;
+        }
+        
+        .photo {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4285f4;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+        }
+        
+        .warning-message {
+            background-color: #fef7e0;
+            border: 1px solid #f9d77e;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 90%;
+            text-align: center;
+            color: #856404;
+            display: none;
+        }
+        
+        .warning-message.visible {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Photo Gallery</h1>
+    
+    <div class="photo-container">
+        <div class="photo-box">
+            <h2>Photo 1</h2>
+            <img id="photo1" class="photo" src="/api/placeholder/600/400" alt="First photo">
+        </div>
+        
+        <div class="photo-box">
+            <h2>Photo 2</h2>
+            <img id="photo2" class="photo" src="/api/placeholder/600/400" alt="Second photo">
+        </div>
+    </div>
+    
+    <div class="warning-message" id="warning">
+        <strong>Warning!</strong> This is an important message for the user. Please proceed with caution.
+    </div>
+    
+    <div class="control-panel">
+        <button id="warningBtn">Show Warning</button>
+        <button id="resizePhoto1">Resize Photo 1</button>
+        <button id="resizePhoto2">Resize Photo 2</button>
+        <button id="changePhoto1">Change Photo 1</button>
+        <button id="changePhoto2">Change Photo 2</button>
+        <button id="changeButtonBg">Change Button Color</button>
+    </div>
+    
+    <footer>
+        <p>Interactive Photo Website &copy; 2025</p>
+    </footer>
+    
+    <script>
+        let photo1Size = 100;
+        let photo2Size = 100;
+        let photo1Index = 1;
+        let photo2Index = 1;
+        let buttonColorIndex = 0;
+        
+        const photoUrls = [
+            '/api/placeholder/600/400',
+            '/api/placeholder/500/300',
+            '/api/placeholder/700/500',
+            '/api/placeholder/800/600'
+        ];
+        
+        const buttonColors = [
+            '#4285f4', // Google Blue
+            '#ea4335', // Google Red
+            '#fbbc05', // Google Yellow
+            '#34a853', // Google Green
+            '#9c27b0', // Purple
+            '#ff9800', // Orange
+            '#009688'  // Teal
+        ];
+        
+        const photo1 = document.getElementById('photo1');
+        const photo2 = document.getElementById('photo2');
+        const warning = document.getElementById('warning');
+        const warningBtn = document.getElementById('warningBtn');
+        const resizePhoto1Btn = document.getElementById('resizePhoto1');
+        const resizePhoto2Btn = document.getElementById('resizePhoto2');
+        const changePhoto1Btn = document.getElementById('changePhoto1');
+        const changePhoto2Btn = document.getElementById('changePhoto2');
+        const changeButtonBgBtn = document.getElementById('changeButtonBg');
+        const allButtons = document.querySelectorAll('button');
+        
+        warningBtn.addEventListener('click', () => {
+            warning.classList.toggle('visible');
+            
+            if (warning.classList.contains('visible')) {
+                setTimeout(() => {
+                    warning.classList.remove('visible');
+                }, 3000);
+            }
+        });
+        
+        resizePhoto1Btn.addEventListener('click', () => {
+            photo1Size = (photo1Size === 100) ? 80 : (photo1Size === 80) ? 120 : 100;
+            photo1.style.width = ${photo1Size}%;
+        });
+        
+        resizePhoto2Btn.addEventListener('click', () => {
+            photo2Size = (photo2Size === 100) ? 80 : (photo2Size === 80) ? 120 : 100;
+            photo2.style.width = ${photo2Size}%;
+        });
+        
+        changePhoto1Btn.addEventListener('click', () => {
+            photo1Index = (photo1Index + 1) % photoUrls.length;
+            photo1.src = photoUrls[photo1Index];
+        });
+        
+        changePhoto2Btn.addEventListener('click', () => {
+            photo2Index = (photo2Index + 1) % photoUrls.length;
+            photo2.src = photoUrls[photo2Index];
+        });
+        
+        changeButtonBgBtn.addEventListener('click', () => {
+            const buttons = Array.from(allButtons).filter(btn => btn !== changeButtonBgBtn);
+            const randomButton = buttons[Math.floor(Math.random() * buttons.length)];
+            
+            buttonColorIndex = (buttonColorIndex + 1) % buttonColors.length;
+            randomButton.style.backgroundColor = buttonColors[buttonColorIndex];
+        });
+    </script>
+</body>
+</html>
