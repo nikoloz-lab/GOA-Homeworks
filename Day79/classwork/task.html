@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dialog Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2d3748;
+            margin-bottom: 2rem;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        button {
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        button:hover {
+            background-color: #3182ce;
+        }
+        
+        .log-section {
+            background-color: #f0f4f8;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .log-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+        
+        #resultLog {
+            min-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-radius: 4px;
+            font-family: monospace;
+            line-height: 1.5;
+            color: #2d3748;
+        }
+        
+        .info-text {
+            color: #718096;
+            font-size: 14px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive JavaScript Dialogs</h1>
+        
+        <div class="controls">
+            <button id="startDemo">Start Interactive Demo</button>
+        </div>
+        
+        <div class="log-section">
+            <div class="log-title">Console Output:</div>
+            <div id="resultLog"></div>
+            <p class="info-text">All results will be displayed here and logged to the browser console.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to log messages both to our UI and to the console
+        function logMessage(message) {
+            // Log to console
+            console.log(message);
+            
+            // Log to our UI
+            const resultLog = document.getElementById('resultLog');
+            const logEntry = document.createElement('div');
+            logEntry.textContent = > ${message};
+            resultLog.appendChild(logEntry);
+            resultLog.scrollTop = resultLog.scrollHeight;
+        }
+        
+        // Main demo function
+        function runInteractiveDemo() {
+            // Using prompt() to get user input
+            const name = prompt("What's your name?", "Guest");
+            
+            // Handling null (if user cancels) or empty input
+            if (name === null) {
+                logMessage("User canceled the name prompt");
+                alert("You canceled the prompt!");
+                return;
+            } else if (name.trim() === "") {
+                logMessage("User entered an empty name");
+                alert("You didn't enter a name!");
+                return;
+            }
+            
+            logMessage(User entered name: ${name});
+            
+            // Using comparison operators
+            const age = prompt(Hello, ${name}! How old are you?);
+            
+            // Convert to number and use comparison operators
+            const ageNum = parseInt(age);
+            
+            if (isNaN(ageNum)) {
+                logMessage("User entered an invalid age");
+                alert("That's not a valid age!");
+                return;
+            }
+            
+            // Using comparison operators
+            let message;
+            if (ageNum < 18) {
+                message = "You're under 18!";
+            } else if (ageNum >= 18 && ageNum < 30) {
+                message = "You're a young adult!";
+            } else if (ageNum >= 30 && ageNum < 60) {
+                message = "You're in your prime!";
+            } else {
+                message = "You have lots of wisdom!";
+            }
+            
+            logMessage(Age entered: ${ageNum}, Message: ${message});
+            alert(message);
+            
+            // Using confirm() and saving the result
+            const userConfirmation = confirm(${name}, do you want to see your information summary?);
+            
+            // Save and log the confirmation result
+            logMessage(User confirmation value: ${userConfirmation});
+            
+            if (userConfirmation) {
+                alert(Name: ${name}\nAge: ${ageNum}\nCategory: ${message});
+                logMessage("User viewed their information summary");
+            } else {
+                alert("Maybe next time!");
+                logMessage("User declined to see their information summary");
+            }
+        }
+        
+        // Add event listener to the button
+        document.getElementById('startDemo').addEventListener('click', runInteractiveDemo);
+        
+        // Initial log message
+        logMessage("Click the button above to start the interactive demo");
+    </script>
+</body>
+</html>

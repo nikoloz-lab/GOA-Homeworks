@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Logger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3367d6;
+        }
+        .info {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Input Logger</h1>
+        <form id="inputForm">
+            <div class="form-group">
+                <label for="userInput">Enter some text:</label>
+                <input type="text" id="userInput" name="userInput" placeholder="Type something here...">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="info">
+            <p>Open your browser console (F12 or right-click > Inspect > Console) to see the logged input!</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting and refreshing the page
+            event.preventDefault();
+            
+            // Get the value from the text input
+            const inputValue = document.getElementById('userInput').value;
+            
+            // Log the input value to the console
+            console.log(inputValue);
+            
+            // Optional: Show an alert to notify the user
+            alert('Your input has been logged to the console!');
+            
+            // Optional: Clear the form after submission
+            this.reset();
+        });
+    </script>
+</body>
+</html>

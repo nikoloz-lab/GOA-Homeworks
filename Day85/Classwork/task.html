@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="flex flex-col items-center justify-center p-6 bg-gray-50 rounded max-w-xs mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Counter</h2>
+      
+      <div className="text-4xl font-bold mb-4">{count}</div>
+      
+      <div className="flex gap-2">
+        <button
+          onClick={() => setCount(count - 1)}
+          className="px-4 py-1 bg-red-400 text-white rounded"
+        >
+          -
+        </button>
+        
+        <button
+          onClick={() => setCount(0)}
+          className="px-4 py-1 bg-gray-400 text-white rounded"
+        >
+          Reset
+        </button>
+        
+        <button
+          onClick={() => setCount(count + 1)}
+          className="px-4 py-1 bg-green-400 text-white rounded"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Counter;

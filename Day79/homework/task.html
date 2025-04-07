@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Interaction Example</title>
+</head>
+<body>
+  <h1>Welcome to the Interaction Demo</h1>
+  <script>
+    // Get user input using prompt
+    const userName = prompt("What is your name?");
+    alert("Hello, " + userName + "!");
+
+    // Ask for user's age
+    const age = prompt("How old are you?");
+    const ageNumber = parseInt(age, 10); // convert to number
+
+    // Use comparison operators
+    if (ageNumber >= 18) {
+      alert("You're an adult.");
+    } else {
+      alert("You're a minor.");
+    }
+
+    // Use confirm() and store the result
+    const likesJS = confirm("Do you like JavaScript?");
+    console.log("User's response to liking JavaScript:", likesJS);
+
+    // Extra: Output everything to the console
+    console.log("Name:", userName);
+    console.log("Age:", ageNumber);
+  </script>
+</body>
+</html>

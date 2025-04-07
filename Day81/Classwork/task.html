@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>შეადარე ინპუტ ტექსტი</title>
+    <script>
+        function compareInputs() {
+            const input1 = document.getElementById("input1").value;
+            const input2 = document.getElementById("input2").value;
+            document.getElementById("result").innerText = input1 === input2;
+        }
+    </script>
+</head>
+<body>
+    <h2>შეადარე ინპყტ ტექსტი</h2>
+    <input id="input1" placeholder="Enter text">
+    <input id="input2" placeholder="Enter text">
+    <button onclick="compareInputs()">შედარება</button>
+    <p id="result"></p>
+</body>
+</html>

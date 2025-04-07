@@ -1,0 +1,71 @@
+html: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="image">
+            <img id="poster" src="image.png" width="300px">
+        </div>
+
+        <div class="elements">
+            <button onclick="borderRadius()">Border Radius</button>
+            <button>Box Shadow</button>
+            <button>Change Picture</button>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+css: *{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+
+}
+
+
+.elements{
+    margin-top: 10px;
+}
+
+.elements button{
+    background: #020308;
+    color: white;
+    font-size: 10px;
+    padding: 6px;
+    border-radius: 8px;
+    border: none;
+    transition: 0.5s ease;
+}
+
+
+.elements button:hover{
+    box-shadow: 0px 0px 50px 0px rgb(70, 70, 70);
+}
+
+js: 
+
+function borderRadius(){
+    let image = document.getElementById('poster')
+    image.style.borderRadius = '15px'
+}

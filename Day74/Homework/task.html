@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>კვერცხი</title>
+</head>
+<body>
+    <h1>კვერცხი დემო</h1>
+    
+    <p id="myParagraph">hello</p>
+    
+    <button onclick="changeText()">Change Text</button>
+    
+    <script>
+        function changeText() {
+            // Get the paragraph element
+            const paragraph = document.getElementById("myParagraph");
+            
+            // Change the paragraph content
+            paragraph.textContent = "Text changed with JavaScript!";
+            
+            // Log to console
+            console.log("New paragraph content: Text changed with JavaScript!");
+        }
+    </script>
+</body>
+</html>

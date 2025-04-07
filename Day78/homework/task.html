@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Console Output</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input {
+            padding: 8px;
+            width: 70%;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Input Form</h2>
+        
+        <input type="text" id="userInput" placeholder="Enter some text">
+        <button onclick="logInput()">Submit</button>
+        
+        <p>Check the browser console (F12 or right-click > Inspect > Console) to see your input.</p>
+    </div>
+
+    <script>
+        function logInput() {
+            // Get the value from the input field
+            const inputValue = document.getElementById("userInput").value;
+            
+            // Output the value to the console
+            console.log(inputValue);
+        }
+    </script>
+</body>
+</html>

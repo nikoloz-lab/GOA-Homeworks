@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #928f8f;
+        }
+        
+        .counter {
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(252, 249, 249);
+            border-radius: 8px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        #display {
+            font-size: 36px;
+            margin: 15px 0;
+        }
+        
+        button {
+            padding: 5px 15px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+        }
+        
+        #minus {
+            background-color: #fd85ff;
+        }
+        
+        #reset {
+            background-color: #2b00ff;
+        }
+        
+        #plus {
+            background-color: #377994;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter">
+        <h1>დამთვლელი</h1>
+        <div id="display">0</div>
+        <div>
+            <button id="minus" onclick="document.getElementById('display').innerHTML = parseInt(document.getElementById('display').innerHTML) - 1">-</button>
+            <button id="reset" onclick="document.getElementById('display').innerHTML = 0">Reset</button>
+            <button id="plus" onclick="document.getElementById('display').innerHTML = parseInt(document.getElementById('display').innerHTML) + 1">+</button>
+        </div>
+    </div>
+</body>
+</html>

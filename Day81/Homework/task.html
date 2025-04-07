@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkbox Comparison</title>
+</head>
+<body>
+  <h2>Checkbox Comparison Form</h2>
+
+  <form id="checkboxForm">
+    <label>
+      <input type="checkbox" id="checkbox1" value="1"> Checkbox 1
+    </label><br>
+    <label>
+      <input type="checkbox" id="checkbox2" value="1"> Checkbox 2
+    </label><br><br>
+
+    <button type="button" onclick="compareCheckboxes()">Compare</button>
+  </form>
+
+  <p id="resultText"></p>
+
+  <script>
+    function compareCheckboxes() {
+      const checkbox1 = document.getElementById("checkbox1");
+      const checkbox2 = document.getElementById("checkbox2");
+      const resultText = document.getElementById("resultText");
+
+      if (checkbox1.checked && checkbox2.checked) {
+        const comparisonResult = checkbox1.value === checkbox2.value;
+        resultText.textContent = "Result of the operation is " + comparisonResult;
+      } else {
+        resultText.textContent = "Please select both checkboxes.";
+      }
+    }
+  </script>
+</body>
+</html>
