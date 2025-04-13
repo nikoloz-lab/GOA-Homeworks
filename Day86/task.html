@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>head shots Grades</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #gradeCount {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    button {
+      font-size: 1em;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student: spioniro golubino</h1>
+  <div id="gradeCount">Number of Grades: 0</div>
+  <button onclick="setGrades(10)">10</button>
+  <button onclick="setGrades(20)">20</button>
+
+  <script>
+    function setGrades(number) {
+      document.getElementById('gradeCount').textContent = 'Number of Grades: ' + number;
+    }
+  </script>
+</body>
+</html>
