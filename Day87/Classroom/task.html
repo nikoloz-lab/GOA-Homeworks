@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>გამოიცანი სიტყვა</title>
+</head>
+<body>
+    <h1>გამოიცანი სიტყვა</h1>
+    <button id="start">დაწყება
+    </button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.getElementById('start');
+            startBtn.addEventListener('click', playGame);
+        });
+        
+        function playGame() {
+            const word = "coding";
+            let guess;
+            
+            do {
+                guess = prompt("What's the secret word?");
+                
+                if (guess === null) return;
+                
+            } while (guess !== word);
+            
+            alert('Success');
+        }
+    </script>
+</body>
+</html>
